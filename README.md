@@ -1,2 +1,2 @@
 # COEN6312 Project
-The topic of our project is Train Management System.
+Our topic of the project is Train Management System.
