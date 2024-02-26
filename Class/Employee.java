@@ -2,15 +2,15 @@ public class Employee {
     // Attributes
     private int employeeId;
     private String name;
-    private String department;
+    private String trainNumber;
     private String phone;
     private String shiftSchedule;
 
     // Constructor
-    public Employee(int employeeId, String name, String department, String phone, String shiftSchedule) {
+    public Employee(int employeeId, String name, String trainNumber, String phone, String shiftSchedule) {
         this.employeeId = employeeId;
         this.name = name;
-        this.department = department;
+        this.trainNumber = trainNumber;
         this.phone = phone;
         this.shiftSchedule = shiftSchedule;
     }
@@ -32,12 +32,12 @@ public class Employee {
         this.name = name;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getTrainNumber() {
+        return trainNumber;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setTrainNumber(String trainNumber) {
+        this.trainNumber = trainNumber;
     }
 
     public String getPhone() {
@@ -71,7 +71,7 @@ public class Employee {
         return "Employee{" +
                 "employeeId=" + employeeId +
                 ", name='" + name + '\'' +
-                ", department='" + department + '\'' +
+                ", trainNumber='" + trainNumber + '\'' +
                 ", phone='" + phone + '\'' +
                 ", shiftSchedule='" + shiftSchedule + '\'' +
                 '}';
