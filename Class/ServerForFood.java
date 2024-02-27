@@ -26,7 +26,9 @@ public class ServerForFood {
     public void cancelOrder(String orderId) {
         // Implementation for canceling an order
     }
-
+     public void receiveFeedback() {
+        // Implementation
+    }
     public void updateMenu(Map<String, String> newMenuItems) {
         // Implementation for updating the menu
         this.menuItems = newMenuItems;
