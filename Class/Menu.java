@@ -23,11 +23,26 @@ public class Menu {
         items.removeIf(item -> item.getItemId().equals(itemId));
     }
 
-    public void updateItem(MenuItem item) {
-        // Find and update the item in the list
+    public void updateItem(MenuItem newItem) {
+        for (int i = 0; i < items.size(); i++) {
+            MenuItem item = items.get(i);
+            if (item.getItemId().equals(newItem.getItemId())) {
+                items.set(i, newItem); // Update the item with the new item details
+                return;
+            }
+        }
+        System.out.println("Item not found for update.");
     }
 
     public void listItems() {
-        // List all items
+        if (items.isEmpty()) {
+            System.out.println("The menu is currently empty.");
+            return;
+        }
+        
+        System.out.println("Menu Items:");
+        for (MenuItem item : items) {
+            System.out.println(item.toString()); // Assuming MenuItem has a toString() method implemented
+        }
     }
 }
