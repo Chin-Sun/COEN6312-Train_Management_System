@@ -3,17 +3,17 @@ package Test;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import Class.Order;
+import Class.FoodOrder;
 import Class.MenuItem;
 
-public class OrderTest {
-    private Order order;
+public class FoodOrderTest {
+    private FoodOrder order;
     private MenuItem item1, item2;
 
     @Before
     public void setUp() {
         // Initialize your Order and some MenuItems before each test
-        order = new Order("orderId123", "customerId456");
+        order = new FoodOrder("orderId123", "customerId456");
         item1 = new MenuItem("item1", "Item 1", 10.00); // Assuming MenuItem has a constructor like MenuItem(String itemId, String name, double price)
         item2 = new MenuItem("item2", "Item 2", 15.00);
     }

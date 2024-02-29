@@ -36,7 +36,7 @@ public class Restaurants {
         return this.menu;
     }
 
-    public void processOrder(Order order) {
+    public void processOrder(FoodOrder foodOrder) {
         // Implementation
     }
 

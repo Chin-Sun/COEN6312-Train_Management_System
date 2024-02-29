@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Order {
+public class FoodOrder {
     private String orderId;
     private String customerId;
 //    private List<MenuItem> itemsOrdered; // This should perhaps be a List<OrderItem> or Map<MenuItem, Integer>
@@ -13,7 +13,7 @@ public class Order {
     private double totalPrice;
 //    private List<OrderItem> itemsOrdered;
 
-    public Order(String orderId, String customerId) {
+    public FoodOrder(String orderId, String customerId) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.itemsOrdered = new ArrayList<>();
