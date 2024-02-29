@@ -1,6 +1,6 @@
 # Train Management System.
 ## Introduction of files
-**The Class folder contains the code for each class of our Train Management System.**  
+**The Class folder contains the code for each class of our Train Management System in Class Folder.**  
 There are 20 classes in total:  
 - Passenger
 - Ticket
@@ -23,4 +23,4 @@ There are 20 classes in total:
 - Order
 - Menu
 
-**The Test file is the test code for each class.**
+**The Test folder in Class folder is the test code for each class.**
