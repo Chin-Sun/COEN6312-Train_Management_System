@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="javalib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../CS61B/data-structures-ucb-master/library-sp18/javalib" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/Maven" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../../CS61B/data-structures-ucb-master/library-sp18/javalib" />
+      <root url="file://$PROJECT_DIR$/Maven" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../CS61B/data-structures-ucb-master/library-sp18/javalib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../CS61B/data-structures-ucb-master/library-sp18/javalib" recursive="false" type="SOURCES" />
+  </library>
+</component>
