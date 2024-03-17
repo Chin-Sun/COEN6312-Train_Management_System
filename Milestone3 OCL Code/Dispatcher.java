@@ -1,32 +1,6 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-public class Dispatcher {
-    private static final Set<String> dispatcherIDs = new HashSet<>();
-    private String dispatcherID;
-
-    public Dispatcher(String dispatcherID) {
-        if (!setDispatcherID(dispatcherID)) {
-            throw new IllegalArgumentException("Dispatcher ID must be unique.");
-        }
-    }
-
-    public static boolean isIDUnique(String id) {
-        return !dispatcherIDs.contains(id);
-    }
-
-    private boolean setDispatcherID(String id) {
-        if (dispatcherIDs.contains(id)) {
-            return false;
-        }
-        this.dispatcherID = id;
-        dispatcherIDs.add(id);
-        return true;
-    }
-
-    // Getter and other methods...
-}
 public class Dispatcher {
     private List<Train> trains;
     private List<Personnel> personnel;
