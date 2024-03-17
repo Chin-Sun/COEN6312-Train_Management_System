@@ -1,86 +1,60 @@
-import java.util.List;
+public class Train {
+    private int maxCapacity;
+
+    public Train(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+}
 
 public class CargoManifest {
-	private String departureStation;
-	private List<String> contents;
-	private int weight;
-	private int manifestId;
-	private String destinationStation;
+    private String departureStation;
+    private String destinationStation;
+    private int weight;
+    private Train train;
 
-	public String getDepartureStation() {
-		return departureStation;
-	}
+    public CargoManifest(Train train) {
+        if (train == null) {
+            throw new IllegalArgumentException("Train cannot be null.");
+        }
+        this.train = train;
+    }
 
-	public void setDepartureStation(String departureStation) {
-		if (departureStation == null || departureStation.isEmpty()) {
-			throw new IllegalArgumentException("Departure station cannot be empty.");
-		}
-		this.departureStation = departureStation;
-	}
+    public String getDepartureStation() {
+        return departureStation;
+    }
 
-	public List<String> getContents() {
-		return contents;
-	}
+    public void setDepartureStation(String departureStation) {
+        if (departureStation == null || departureStation.trim().isEmpty()) {
+            throw new IllegalArgumentException("Departure station cannot be empty.");
+        }
+        this.departureStation = departureStation;
+    }
 
-	public void setContents(List<String> contents) {
-		if (contents == null || contents.isEmpty()) {
-			throw new IllegalArgumentException("Contents cannot be empty.");
-		}
-		this.contents = contents;
-	}
+    public String getDestinationStation() {
+        return destinationStation;
+    }
 
-	public int getWeight() {
-		return weight;
-	}
+    public void setDestinationStation(String destinationStation) {
+        if (destinationStation == null || destinationStation.trim().isEmpty()) {
+            throw new IllegalArgumentException("Destination station cannot be empty.");
+        }
+        this.destinationStation = destinationStation;
+    }
 
-	public void setWeight(int weight) {
-		if (weight <= 0) {
-			throw new IllegalArgumentException("Weight must be greater than 0.");
-		}
-		this.weight = weight;
-	}
+    public int getWeight() {
+        return weight;
+    }
 
-	public int getManifestId() {
-		return manifestId;
-	}
+    public void setWeight(int weight) {
+        if (weight <= 0 || weight > train.getMaxCapacity()) {
+            throw new IllegalArgumentException("Weight must be positive and within the train's max capacity.");
+        }
+        this.weight = weight;
+    }
 
-	public void setManifestId(int manifestId) {
-		this.manifestId = manifestId;
-	}
-
-	public String getDestinationStation() {
-		return destinationStation;
-	}
-
-	public void setDestinationStation(String destinationStation) {
-		if (destinationStation == null || destinationStation.isEmpty()) {
-			throw new IllegalArgumentException("Destination station cannot be empty.");
-		}
-		this.destinationStation = destinationStation;
-	}
-
-	// Assume your other methods remain unchanged.
-
-
-public int calculateTotalWeight(String contents, int manifestId) {
-		// TODO Auto-generated method
-		return 0;
-	 }
-	/**
-	 * 
-	 * @param departureStation 
-	 * @param trainId 
-	 * @param contents 
-	 * @param destinationStation 
-	 * @param weight 
-	 * @return 
-	 */
-	public int createManifest(String departureStation, Train trainId, String contents, String destinationStation, int weight) { 
-		// TODO Auto-generated method
-		return 0;
-	 }
-	public void updateManifest(int manifestId, List<String> updatedDetails) { 
-		// TODO Auto-generated method
-	 } 
-
+    // Additional getters and setters...
 }
