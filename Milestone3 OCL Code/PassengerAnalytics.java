@@ -1,110 +1,90 @@
-
-
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PassengerAnalytics {
+    private PassengerData passengerData;
 
-	/**
-	 * 
-	 */
-	public String peakTime;
-	/**
-	 * 
-	 */
-	public String analysisType;
-	/**
-	 * 
-	 */
-	public List<String> travelLocations;
-	/**
-	 * 
-	 */
-	public List<String> passengerData;
-	/**
-	 * Getter of peakTime
-	 */
-	public String getPeakTime() {
-	 	 return peakTime; 
-	}
-	/**
-	 * Setter of peakTime
-	 */
-	public void setPeakTime(String peakTime) { 
-		 this.peakTime = peakTime; 
-	}
-	/**
-	 * Getter of analysisType
-	 */
-	public String getAnalysisType() {
-	 	 return analysisType; 
-	}
-	/**
-	 * Setter of analysisType
-	 */
-	public void setAnalysisType(String analysisType) { 
-		 this.analysisType = analysisType; 
-	}
-	/**
-	 * Getter of travelLocations
-	 */
-	public List<String> getTravelLocations() {
-	 	 return travelLocations; 
-	}
-	/**
-	 * Setter of travelLocations
-	 */
-	public void setTravelLocations(List<String> travelLocations) { 
-		 this.travelLocations = travelLocations; 
-	}
-	/**
-	 * Getter of passengerData
-	 */
-	public List<String> getPassengerData() {
-	 	 return passengerData; 
-	}
-	/**
-	 * Setter of passengerData
-	 */
-	public void setPassengerData(List<String> passengerData) { 
-		 this.passengerData = passengerData; 
-	}
-	/**
-	 * 
-	 * @param startDate 
-	 * @param passengerData 
-	 * @param endDate 
-	 */
-	public void collectData(String startDate, String passengerData, String endDate) { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	 * @param analysisType 
-	 * @param passengerData 
-	 * @return 
-	 */
-	public String identifyTrends(String analysisType, String passengerData) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @param includeSections 
-	 * @param analysisType 
-	 * @return 
-	 */
-	public String generateReports(String includeSections, String analysisType) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @param trendResults 
-	 * @return 
-	 */
-	public String recommendChanges(String trendResults) { 
-		// TODO Auto-generated method
-		return null;
-	 } 
+    public PassengerAnalytics(PassengerData passengerData) {
+        this.passengerData = passengerData;
+    }
 
+    // Ensure booking history in passenger data matches the booking history of associated tickets.
+    public boolean checkBookingHistoryConsistency() {
+        Set<BookingHistory> passengerBookingHistory = passengerData.getBookingHistory();
+        Set<BookingHistory> ticketBookingHistories = passengerData.getTickets().stream()
+            .map(Ticket::getBookingHistory)
+            .collect(Collectors.toSet());
+
+        return passengerBookingHistory.equals(ticketBookingHistories);
+    }
+
+    // Ensure consistency of passenger IDs between tickets and passenger data.
+    public boolean checkPassengerIDConsistency() {
+        String passengerID = passengerData.getID();
+        return passengerData.getTickets().stream()
+            .allMatch(ticket -> ticket.getPassengerID().equals(passengerID));
+    }
+
+    // The number of collected passenger data should match the number of associated tickets.
+    public boolean checkPassengerDataTicketCount() {
+        // Assuming a method to collect all relevant passenger data records
+        int passengerDataCount = collectPassengerData().size();
+        int ticketCount = passengerData.getTickets().size();
+        return passengerDataCount == ticketCount;
+    }
+
+    // Each Ticket associated with PassengerAnalytics should have a valid destination consistent with the train's route.
+    public boolean checkTicketDestinationConsistency() {
+        return passengerData.getTickets().stream()
+            .allMatch(ticket -> ticket.getDestination().equals(ticket.getTrain().viewTrainRoute().getLast()));
+    }
+
+    // Method to collect all relevant passenger data, placeholder for actual implementation
+    private List<PassengerData> collectPassengerData() {
+        // Placeholder for collecting passenger data
+        return List.of(passengerData);
+    }
+
+    // Other methods...
+}
+
+class PassengerData {
+    private String ID;
+    private Set<BookingHistory> bookingHistory;
+    private List<Ticket> tickets;
+
+    // Getters and Setters...
+
+    public String getID() { return ID; }
+    public Set<BookingHistory> getBookingHistory() { return bookingHistory; }
+    public List<Ticket> getTickets() { return tickets; }
+}
+
+class Ticket {
+    private String passengerID;
+    private BookingHistory bookingHistory;
+    private String destination;
+    private Train train;
+
+    // Getters and Setters...
+
+    public String getPassengerID() { return passengerID; }
+    public BookingHistory getBookingHistory() { return bookingHistory; }
+    public String getDestination() { return destination; }
+    public Train getTrain() { return train; }
+}
+
+class Train {
+    // Method to get the train's route, which returns a list of destinations.
+    public Route viewTrainRoute() { /* Implementation */ }
+}
+
+class BookingHistory {
+    // Details about the booking history
+}
+
+class Route {
+    // Assuming this class has a method to get the last destination in the route
+    public String getLast() { /* Implementation */ }
 }
