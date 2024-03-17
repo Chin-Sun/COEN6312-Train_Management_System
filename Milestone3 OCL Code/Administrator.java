@@ -1,45 +1,30 @@
-
-
 public class Administrator {
+    private boolean isBackingUp = false;
+    private boolean isRestoring = false;
 
-	/**
-	 * 
-	 */
-	private int Id;
+    public synchronized void backupSystem() {
+        if (isRestoring) {
+            throw new IllegalStateException("Cannot backup while system is being restored.");
+        }
+        try {
+            isBackingUp = true;
+            // Code to backup the system...
+        } finally {
+            isBackingUp = false;
+        }
+    }
 
-	/**
-	 * Getter of Id
-	 */
-	public int getId() {
-	 	 return Id; 
-	}
+    public synchronized void restoreSystem() {
+        if (isBackingUp) {
+            throw new IllegalStateException("Cannot restore while system is being backed up.");
+        }
+        try {
+            isRestoring = true;
+            // Code to restore the system...
+        } finally {
+            isRestoring = false;
+        }
+    }
 
-	/**
-	 * Setter of Id
-	 */
-	public void setId(int Id) { 
-		 this.Id = Id; 
-	}
-
-	/**
-	 * 
-	 */
-	public void backupSystem() { 
-		// TODO Auto-generated method
-	 }
-
-	/**
-	 * 
-	 */
-	public void restoreSystem() { 
-		// TODO Auto-generated method
-	 }
-
-	/**
-	 * 
-	 */
-	public void manageAccounts() { 
-		// TODO Auto-generated method
-	 } 
-
+    // Other Administrator methods...
 }
