@@ -1,78 +1,46 @@
-
-
-import java.util.List;
+import java.util.regex.Pattern;
+import java.util.Set;
 
 public class BackendManagement {
+    private String phone;
+    private String trainId;
+    
+    // This set should contain all valid train IDs in the system.
+    private Set<String> validTrainIds;
 
-	/**
-	 * 
-	 */
-	private String trainId;
-	private int Id;
-	/**
-	 * 
-	 */
-	private List<String> shiftSchedule;
-	/**
-	 * 
-	 */
-	private String name;
-	/**
-	 * Getter of trainId
-	 */
-	public String getTrainId() {
-	 	 return trainId; 
-	}
-	/**
-	 * Setter of trainId
-	 */
-	public void setTrainId(String trainId) { 
-		 this.trainId = trainId; 
-	}
-	/**
-	 * Getter of Id
-	 */
-	public int getId() {
-	 	 return Id; 
-	}
-	/**
-	 * Setter of Id
-	 */
-	public void setId(int Id) { 
-		 this.Id = Id; 
-	}
-	/**
-	 * Getter of shiftSchedule
-	 */
-	public List<String> getShiftSchedule() {
-	 	 return shiftSchedule; 
-	}
-	/**
-	 * Setter of shiftSchedule
-	 */
-	public void setShiftSchedule(List<String> shiftSchedule) { 
-		 this.shiftSchedule = shiftSchedule; 
-	}
-	/**
-	 * Getter of name
-	 */
-	public String getName() {
-	 	 return name; 
-	}
-	/**
-	 * Setter of name
-	 */
-	public void setName(String name) { 
-		 this.name = name; 
-	}
-	/**
-	 * 
-	 * @param settings 
-	 * @return 
-	 */
-	public boolean updateSystemSettings(String settings) { 
-		// TODO Auto-generated method
-		return false;
-	 } 
+    public BackendManagement(Set<String> validTrainIds) {
+        this.validTrainIds = validTrainIds;
+    }
 
+    // Assuming a Train class exists that has a static method getAllInstances to return all Train instances
+    public void setTrainId(String trainId) {
+        // Constraint 3: ValidTrainNumber
+        if (!validTrainNumber(trainId)) {
+            throw new IllegalArgumentException("Invalid train number. It does not match an actual train.");
+        }
+        this.trainId = trainId;
+    }
+    
+    public void setPhone(String phone) {
+        // Constraint 4: ValidPhoneFormat
+        if (!validPhoneFormat(phone)) {
+            throw new IllegalArgumentException("Invalid phone number format.");
+        }
+        this.phone = phone;
+    }
+    
+    // Helper method to check for a valid train number
+    private boolean validTrainNumber(String trainId) {
+        // Check if the trainId exists in the set of valid train IDs
+        return validTrainIds.contains(trainId);
+    }
+
+    // Helper method to check for a valid phone format
+    private boolean validPhoneFormat(String phone) {
+        String regex = "^[+]?[0-9]{10,13}$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(phone).matches();
+    }
+
+    // Getters and other methods...
 }
