@@ -1,5 +1,5 @@
 # Train Management System.
-# Class
+## Class
 - **Class: It is source code for Milestone 2.**  
 The Class folder contains the code for each class of our Train Management System in Class Folder.  
 
@@ -8,7 +8,7 @@ The Class folder contains the code for each class of our Train Management System
 ## Milestone3 OCL code
 In this folder is our updated class code. And added 50% OCL constraints to each class.  
 
-# Final code
+## Final code
 In this folder, we update our classes code. And we have totally **25** classes now. If you want to know more about our project, please see our final report which is more detailed.
 
 # Last but not least
